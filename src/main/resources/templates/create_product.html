@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Product</title>
+  <script>
+    function validateForm() {
+      var form = document.getElementById("myForm");
+      if (form.checkValidity() === false) {
+        event.preventDefault(); // Prevent form submission
+        alert("Please fill in all required fields.");
+      }
+    }
+  </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div class = "container">
+  <div class = "row">
+    <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h1 class = "text-center"> Create New Product </h1>
+      <div class = "card-body">
+        <form  th:action="@{/Products}" th:object = "${product}" method="POST" >
+          <div class ="form-group">
+            <label> Product Brand </label>
+            <input
+                    type = "text"
+                    name = "ProductBrand"
+                    th:field = "*{productBrand}"
+                    class = "form-control"
+                    placeholder="Enter Product Brand"
+                    required
+
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> productColor </label>
+            <input
+                    type = "text"
+                    name = "productColor"
+                    th:field = "*{productColor}"
+                    class = "form-control"
+                    placeholder="Enter Product colour"
+                    required
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> productPrice </label>
+            <input
+                    type = "Number"
+                    name = "productPrice"
+                    th:field = "*{productPrice}"
+                    class = "form-control"
+                    placeholder="Enter Product price"
+                    required
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> description </label>
+            <input
+                    type = "text"
+                    name = "description"
+                    th:field = "*{description}"
+                    class = "form-control"
+                    placeholder="Enter Product Description"
+                    required
+            />
+          </div>
+          <div class ="form-group">
+<!--            <label> ProductType </label>-->
+<!--            <input-->
+<!--                    type = "text"-->
+<!--                    name = "ProductType"-->
+<!--                    th:field = "*{ProductType}"-->
+<!--                    class = "form-control"-->
+<!--                    placeholder="Enter Formal/casual/None(Mobile)/Running(shoes)"-->
+<!--                    required-->
+<!--            />-->
+            <label>ProductType</label>
+            <div>
+              <label>
+                <input type="radio" name="ProductType" th:field = "*{ProductType}" value="Formal" required> formal
+              </label>
+              <label>
+                <input type="radio" name="ProductType" th:field = "*{ProductType}" value="casual" required> Casual
+              </label>
+              <label>
+                <input type="radio" name="ProductType" th:field = "*{ProductType}" value="Running" required> Running shoes
+              </label>
+                <label>
+                    <input type="radio" name="ProductType" th:field = "*{ProductType}" value="Keypad" required> Keypad
+                </label>
+                <label>
+                    <input type="radio" name="ProductType" th:field = "*{ProductType}" value="SmartMobile" required> SmartMobile
+                </label>
+          </div>
+          <div class ="form-group">
+<!--            <label> suitableAge </label>-->
+<!--            <input-->
+<!--                    type = "text"-->
+<!--                    name = "suitableAge"-->
+<!--                    th:field = "*{suitableAge}"-->
+<!--                    class = "form-control"-->
+<!--                    placeholder="Enter Suitable Age category kids/Adults"-->
+<!--                    required-->
+<!--            />-->
+            <label>suitableAge</label>
+            <div>
+              <label>
+                <input type="radio" name="suitableAge" th:field = "*{suitableAge}" value="Kids" required> Kids
+              </label>
+              <label>
+                <input type="radio" name="suitableAge" th:field = "*{suitableAge}" value="Adults" required> Adults
+              </label><label>
+                <input type="radio" name="suitableAge" th:field = "*{suitableAge}" value="All" required> All
+            </label>
+
+
+            </div>
+          </div>
+          <div class ="form-group">
+<!--            <label> categoryName </label>-->
+<!--            <input-->
+<!--                    type = "text"-->
+<!--                    name = "categoryName"-->
+<!--                    th:field = "*{categoryName}"-->
+<!--                    class = "form-control"-->
+<!--                    placeholder="Enter shoes/cloths/mobile"-->
+<!--                    required-->
+<!--            />-->
+            <label>categoryName</label>
+            <div>
+              <label>
+                <input type="radio" name="categoryName" th:field = "*{categoryName}" value="shoes" required> shoes
+              </label>
+              <label>
+                <input type="radio" name="categoryName" th:field = "*{categoryName}" value="mobile" required> mobile
+              </label>
+              <label>
+                <input type="radio" name="categoryName" th:field = "*{categoryName}" value="cloths" required> cloths
+              </label>
+
+          </div>
+          <div class ="form-group">
+<!--            <label> suitableGender </label>-->
+<!--            <input-->
+<!--                    type = "text"-->
+<!--                    name = "suitableGender"-->
+<!--                    th:field = "*{suitableGender}"-->
+<!--                    class = "form-control"-->
+<!--                    placeholder="Enter Male/female/All(Mobile)"-->
+<!--                    required-->
+<!--            />-->
+            <label>suitableGender</label>
+            <div>
+              <label>
+                <input type="radio" name="suitableGender" th:field = "*{suitableGender}" value="male" required> Male
+              </label>
+              <label>
+                <input type="radio" name="suitableGender" th:field = "*{suitableGender}" value="female" required> Female
+              </label>
+              <label>
+                <input type="radio" name="suitableGender" th:field = "*{suitableGender}" value="all" required> All
+              </label>
+            </div>
+            </div>
+          <div class = "box-footer">
+            <button type="submit" class = "btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
